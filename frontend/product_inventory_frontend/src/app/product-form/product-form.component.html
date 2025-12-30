@@ -1,0 +1,43 @@
+<h1>Product Form</h1>
+
+<table>
+  <tr>
+    <th>Product Code</th>
+    <th>Product Name</th>
+    <th>Category</th>
+    <th>Price</th>
+  </tr>
+  <tr *ngFor="let p of products" (click)="selectProduct(p)" style="cursor:pointer;">
+    <td>{{ p._id }}</td>
+    <td>{{ p.productName }}</td>
+    <td>{{ p.category }}</td>
+    <td>{{ p.price }}</td>
+  </tr>
+</table>
+
+<div class="form">
+  <label>
+    Product Code:
+    <input type="text" [(ngModel)]="product._id">
+  </label>
+
+  <label>
+    Product Name:
+    <input type="text" [(ngModel)]="product.productName">
+  </label>
+
+  <label>
+    Category:
+    <input type="text" [(ngModel)]="product.category">
+  </label>
+
+  <label>
+    Price:
+    <input type="number" [(ngModel)]="product.price">
+  </label>
+
+  <div class="actions">
+    <button (click)="addProduct()">Add Product</button>
+    <button (click)="updateProduct()">Update Product</button>
+  </div>
+</div>

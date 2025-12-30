@@ -1,0 +1,57 @@
+<h1>Product List</h1>
+
+<table border="1">
+  <thead>
+    <tr>
+      <th>Product Code</th>
+      <th>Product Name</th>
+      <th>Category</th>
+      <th>Price</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let p of products">
+      <td>{{p._id}}</td>
+      <td>{{p.productName}}</td>
+      <td>{{p.category}}</td>
+      <td>{{p.price}}</td>
+      <td>
+        <button (click)="editProduct(p)">Edit</button>
+        <button (click)="setDeleteId(p._id)">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<br><br>
+
+
+Enter id to delete :
+<input type="text" [(ngModel)]="pid">
+<input type="button" value="delete" (click)="removeProduct()">
+
+<hr>
+
+<h2 *ngIf="editing">Edit Product</h2>
+
+<div *ngIf="editing" style="border:1px solid #ccc; padding:10px; width:300px;">
+  <p><b>Product ID:</b> {{ selectedProduct._id }}</p>
+
+  <label>
+    Product Name:
+    <input type="text" [(ngModel)]="selectedProduct.productName">
+  </label>
+
+  <br><br>
+
+  <label>
+    Price:
+    <input type="number" [(ngModel)]="selectedProduct.price">
+  </label>
+
+  <br><br>
+
+  <button (click)="updateProduct()">Update</button>
+  <button (click)="cancelEdit()">Cancel</button>
+</div>
